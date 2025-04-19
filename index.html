@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Para você 💖</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0e1b2a;
+      color: white;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 18px;
+      border-radius: 12px;
+      border: none;
+      background-color: #ff4081;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #ff1c68;
+    }
+
+    .content img {
+      max-width: 150px;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+
+    .hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: url('https://emoji.gg/assets/emoji/8292-pink-heart.gif') no-repeat center/contain;
+      animation: float 8s linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    .spotify {
+      margin: 20px 0;
+    }
+
+    .message {
+      max-width: 600px;
+      margin-top: 10px;
+      font-size: 25px;
+      line-height: 1.6;
+    }
+
+    .counter {
+      font-size: 20px;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="center" id="startScreen">
+  <h1>Presente especial para alguém especial</h1>
+  <button onclick="start()">💖 Clique</button>
+</div>
+
+<div class="center hidden" id="mainContent">
+  <div class="spotify">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0aEeXTj2JCSvrPtYbCRgNU?utm_source=generator" width="300" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </div>
+
+  <img src="minhagatinha.jpg" alt="Minha gatinha">
+
+  <div class="counter">❤️ Eu te amo há: <span id="timer"></span></div>
+
+  <div class="message">
+    A cada dia que passa, meu coração se enche mais de carinho e amor por você. Cada riso seu ilumina o meu mundo, e cada gesto me faz sentir que estou exatamente onde deveria estar. Você é a razão dos meus melhores pensamentos e da melhora dos meus dias, e tudo ao seu lado se torna mais bonito e significativo. Eu te amo para sempre ❤️
+  </div>
+</div>
+
+<div class="hearts" id="hearts"></div>
+
+<script>
+  function start() {
+    document.getElementById('startScreen').classList.add('hidden');
+    document.getElementById('mainContent').classList.remove('hidden');
+    setInterval(updateTimer, 1000);
+    createHearts();
+  }
+
+  // Ajuste a data aqui
+  const startDate = new Date('2025-03-02T00:00:00');
+
+  function updateTimer() {
+    const now = new Date();
+    const diff = now - startDate;
+
+    const seconds = Math.floor(diff / 1000) % 60;
+    const minutes = Math.floor(diff / 1000 / 60) % 60;
+    const hours = Math.floor(diff / 1000 / 60 / 60) % 24;
+    const days = Math.floor(diff / 1000 / 60 / 60 / 24);
+    const years = Math.floor(days / 365);
+    const remainingDays = days % 365;
+
+    document.getElementById('timer').textContent =
+      `${years} anos, ${remainingDays} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos`;
+  }
+
+  function createHearts() {
+    const heartsContainer = document.getElementById('hearts');
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
+      heartsContainer.appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }, 300);
+  }
+</script>
+
+</body>
+</html>

@@ -2,7 +2,8 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Para você 💖</title>
+  <title>Rúcula não é bom</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body, html {
       margin: 0;
@@ -21,6 +22,7 @@
       justify-content: center;
       height: 100vh;
       text-align: center;
+      padding: 20px;
     }
 
     .hidden {
@@ -42,8 +44,11 @@
       background-color: #ff1c68;
     }
 
-    .content img {
-      max-width: 150px;
+    .content img,
+    #mainContent img {
+      width: 80%;
+      max-width: 220px;
+      height: auto;
       border-radius: 12px;
       margin: 20px 0;
     }
@@ -82,10 +87,17 @@
       margin: 20px 0;
     }
 
+    .spotify iframe {
+      border-radius: 12px;
+      width: 90%;
+      max-width: 350px;
+      height: 80px;
+    }
+
     .message {
       max-width: 600px;
       margin-top: 10px;
-      font-size: 25px;
+      font-size: 18px;
       line-height: 1.6;
     }
 
@@ -93,26 +105,47 @@
       font-size: 20px;
       margin: 10px 0;
     }
+
+    @media screen and (max-width: 480px) {
+      .message {
+        font-size: 16px;
+        padding: 0 15px;
+      }
+
+      .counter {
+        font-size: 18px;
+      }
+
+      h1 {
+        font-size: 20px;
+        padding: 0 10px;
+      }
+
+      button {
+        font-size: 16px;
+        padding: 10px 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
 <div class="center" id="startScreen">
-  <h1>Presente especial para alguém especial</h1>
-  <button onclick="start()">💖 Clique</button>
+  <h1>Uma frase</h1>
+  <button onclick="start()">💖 Clique aqui</button>
 </div>
 
 <div class="center hidden" id="mainContent">
   <div class="spotify">
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0aEeXTj2JCSvrPtYbCRgNU?utm_source=generator" width="300" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <iframe src="https://open.spotify.com/embed/track/0aEeXTj2JCSvrPtYbCRgNU?utm_source=generator" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
   </div>
 
-  <img src="minhagatinha.jpg" alt="Minha gatinha">
+  <img src="minhagatinha.jpg" alt="Foto do casal">
 
   <div class="counter">❤️ Eu te amo há: <span id="timer"></span></div>
 
   <div class="message">
-    A cada dia que passa, meu coração se enche mais de carinho e amor por você. Cada riso seu ilumina o meu mundo, e cada gesto me faz sentir que estou exatamente onde deveria estar. Você é a razão dos meus melhores pensamentos e da melhora dos meus dias, e tudo ao seu lado se torna mais bonito e significativo. Eu te amo para sempre ❤️
+    A cada dia que passa, meu coração se enche mais de carinho e amor. Cada riso seu ilumina o meu mundo, e cada gesto seu me faz sentir que estou exatamente onde deveria estar. Você é a razão dos meus melhores pensamentos e da melhora dos meus dias, e tudo ao seu lado se torna mais bonito e significativo. Eu te amo para sempre ❤️
   </div>
 </div>
 
